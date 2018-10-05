@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:id="@+id/gradOptions" android:checkableBehavior="single">
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/gradStatus"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Graduation Status" />
+        <item
+            android:id="@+id/orderTickets"
+            android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="Order Tickets" />
+        <item
+            android:id="@+id/orderClothes"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Order Clothes" />
+    </group>
+    <group android:id="@+id/settingsOptions" android:checkableBehavior="single">
+        <item
+            android:id="@+id/settings"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Settings" />
+    </group>
+</menu>
