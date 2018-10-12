@@ -12,35 +12,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
 import android.net.Uri;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements DashFragment.OnFragmentInteractionListener,
         TicketFragment.OnFragmentInteractionListener,
-        StatusFragment.OnFragmentInteractionListener,
-        SignInFrag.OnFragmentInteractionListener{
+        StatusFragment.OnFragmentInteractionListener{
 
     private DrawerLayout mDrawerLayout;
+    private TextView name;
+    private TextView email;
     FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Bundle bundle = getIntent().getExtras();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.main_container, new SignInFrag());
+        fragmentTransaction.add(R.id.main_container, new DashFragment());
         fragmentTransaction.commit();
 
-
-
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        name = (TextView) headerView.findViewById(R.id.navUserName);
+        email = (TextView) headerView.findViewById(R.id.navUserEmail);
+        name.setText(bundle.getString("userName"));
+        email.setText(bundle.getString("userEmail"));
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
